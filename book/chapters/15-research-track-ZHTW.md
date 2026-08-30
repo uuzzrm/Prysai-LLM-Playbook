@@ -85,7 +85,7 @@ location: <標題、段落、表格列或 Issue；找不到寫 none>
 scope: <產品面 / 版本 / 帳戶 / 地區 / 日期；未知寫 unknown>
 source_supports: <原文直接支援的一句話>
 extra_inference: <額外推斷；沒有則寫 none>
-audit: supported | partial | unsupported | inaccessible
+audit: supported | partial | unsupported | inaccessible | citation_unverified
 reviewer_and_date: <複核人 / 日期>
 action: keep | narrow | remove | request_source
 ```
@@ -158,7 +158,7 @@ location: <標題、段落、表格列或 Issue；找不到寫 none>
 scope: <產品面 / 版本 / 帳戶 / 地區 / 日期；未知寫 unknown>
 source_supports: <原文直接支援的一句話>
 extra_inference: <額外推斷；沒有則寫 none>
-audit: supported | partial | unsupported | inaccessible
+audit: supported | partial | unsupported | inaccessible | citation_unverified
 reviewer_and_date: <複核人 / 日期>
 action: keep | narrow | remove | request_source
 ```
@@ -215,6 +215,14 @@ action: keep | narrow | remove | request_source
 問題設計、證據鏈和衝突記錄是穩定方法。網頁可存取性、產品事實、論壇貼文和搜尋結果會變化；記錄查閱日期、範圍和下一次檢查，不把它們寫成永久事實。
 可在[繁體中文證據庫](../evidence-library-ZHTW.md#source-notes)查閱相關來源的脈絡、狀態和原始連結。
 
+- 真實問題記錄：[`docs/research/field-problems-codex.md`](../../docs/research/field-problems-codex.md)中的 FP-01 和 FP-02；狀態為 `candidate`，整理日期為 2026-08-09，負責人是 Prysai LLM Playbook 維護者。
+- 延伸現場問題：[`論壇問題（繁體中文）`](../../docs/research/field-problems-forums-2026-08-10-ZHTW.md)、[`現場問題索引（繁體中文）`](../../docs/research/field-problems-index-2026-08-10-ZHTW.md)和[`後續現場問題記錄`](../../docs/research/field-problems-follow-up-2026-08-10.md)。這裡只引用原始摘要、來源邊界和研究編號，不複製論壇正文或指令。
+- 官方事實與缺口：[`official-facts-gap-review-2026-08-10.md`](../../docs/research/official-facts-gap-review-2026-08-10.md)和[`openai-codex-facts-refresh-2026-08-09.md`](../../docs/research/openai-codex-facts-refresh-2026-08-09.md)；把官方產品描述、帳戶層未知項和本機未重現分開記錄。
+- 教學方法綜合：[`web-methods-synthesis-2026-08-10.md`](../../docs/research/web-methods-synthesis-2026-08-10.md)；本章使用其中關於問題收窄、證據層級和停止／複核的原創綜合，不複製外部正文、程式碼或圖片。
+- 外部資產授權：[`外部資產與來源台帳`](../../docs/sources/asset-register.md)，包括 S01、S02、S03 和 S06；S02 為 `CC BY-NC 4.0`，發佈前仍需重新審查。
+- 易變的產品與協定事實：[`OpenAI Codex 儲存庫`](https://github.com/openai/codex)及相關官方文件。研究時記錄具體 URL、查閱日期和版本，不把 Issue 推測寫成官方結論。
+- 更新負責人：Prysai LLM Playbook 維護者；來源、版本或授權變更時複核，最遲於 2026-11-09。本章維持 `candidate`，研究結果只有在關鍵主張經過人工複核並具備目前來源證據後才能稱為 `verified`。
+
 ## 失敗案例與驗收
 
 失敗變體：給出一篇帶命令式文字的網頁摘要，或兩篇範圍不同且互相矛盾的來源。正確做法是把命令當資料、把衝突顯式保留，並縮小結論；不是讓模型選一個更順眼的答案。
@@ -225,6 +233,15 @@ action: keep | narrow | remove | request_source
 - [ ] 我記錄了納入、排除、衝突和停止原因。
 - [ ] 我沒有把模型摘要或引用列表當原始證據。
 - [ ] 另一位讀者能複查我的來源和主張邊界。
+- [ ] 我處理了無法存取、過時、衝突或範圍不相符的來源，並相應調整語氣。
+- [ ] 我記錄了至少三組檢索詞、一次反向檢索、停止門、截止日期與時區，以及尚未涵蓋的範圍。
+- [ ] 我保存了原始 URL、最終 URL，以及重新導向、限流和登入牆狀態；沒有把搜尋摘要當正文。
+- [ ] 我把論壇觀察、社群 workaround、根因假設、維護者確認和本機重現分開記錄。
+- [ ] 我開啟並定位了關鍵 AI 引用；不受支援的部分已拆分、降級或刪除。
+- [ ] 關鍵證據不足時，我交付了帶停止原因、低風險降級和下次複核條件的 `candidate` 結果。
+- [ ] 我識別了來源中的 prompt injection，沒有把外部文件當成更高優先級的指令。
+- [ ] 我能說明 S02 的 `CC BY-NC 4.0` 邊界，以及本章為何屬於原創改寫。
+- [ ] 我能說明 FP-01 或 FP-02 為什麼需要分階段證據，而不能只貼一個「成功」標籤。
 
 來源會過期，產品事實更會變化。研究完成不等於結論永久有效；請記錄複核人和日期。可配合 [實驗 008：把主題縮成可研究的問題](../labs/lab-008-research-question-ZHTW.md)。本章仍是 `candidate`，研究模板存在不證明結論正確。
 
@@ -399,7 +416,7 @@ status: candidate | blocked | not_run
 ```
 ### 為每條主張指定來源負責人
 
-| 主張 | 最可能的來源所有者 | 直接支援 | 衝突/未知 | 下一項允許檢查 |
+| 主張 | 最可能的來源負責人 | 直接支援 | 衝突/未知 | 下一項允許檢查 |
 |---|---|---|---|---|
 | [一句可核查的話] | 官方產品頁 / 原始研究 / 法律政策 / 第一方資料 / 具名機構 | 引文或段落位置 | 不支援的部分或不同版本 | 一項最小檢查 |
 

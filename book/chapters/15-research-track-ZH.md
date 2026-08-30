@@ -74,7 +74,7 @@ location: <标题、段落、表格行或 Issue；找不到写 none>
 scope: <产品面 / 版本 / 账户 / 地区 / 日期；未知写 unknown>
 source_supports: <原文直接支持的一句话>
 extra_inference: <额外推断；没有则写 none>
-audit: supported | partial | unsupported | inaccessible
+audit: supported | partial | unsupported | inaccessible | citation_unverified
 reviewer_and_date: <复核人 / 日期>
 action: keep | narrow | remove | request_source
 ```
@@ -145,7 +145,7 @@ location: <标题、段落、表格行或 Issue；找不到写 none>
 scope: <产品面 / 版本 / 账号 / 地区 / 日期；未知写 unknown>
 source_supports: <原文直接支持的一句话>
 extra_inference: <额外推断；没有则写 none>
-audit: supported | partial | unsupported | inaccessible
+audit: supported | partial | unsupported | inaccessible | citation_unverified
 reviewer_and_date: <复核人 / 日期>
 action: keep | narrow | remove | request_source
 ```
@@ -202,6 +202,14 @@ action: keep | narrow | remove | request_source
 问题设计、证据链和冲突记录是稳定方法。网页是否可访问、产品事实、论坛帖子和搜索结果都会变化；记录访问日期、范围和下一次检查，不把它们写成永久事实。
 可在[中文证据库](../evidence-library-ZH.md#source-notes)中查阅相关来源的上下文、状态和原始链接。
 
+- 现实问题记录：[`docs/research/field-problems-codex.md`](../../docs/research/field-problems-codex.md)中的 FP-01 和 FP-02；状态为 `candidate`，整理日期为 2026-08-09，负责人是 Prysai LLM Playbook 维护者。
+- 扩展现场问题：[`论坛问题（中文）`](../../docs/research/field-problems-forums-2026-08-10-ZH.md)、[`现场问题索引（中文）`](../../docs/research/field-problems-index-2026-08-10-ZH.md)和[`后续现场问题记录`](../../docs/research/field-problems-follow-up-2026-08-10.md)。这里只引用原始摘要、来源边界和研究编号，不复制论坛正文或命令。
+- 官方事实与缺口：[`official-facts-gap-review-2026-08-10.md`](../../docs/research/official-facts-gap-review-2026-08-10.md)和[`openai-codex-facts-refresh-2026-08-09.md`](../../docs/research/openai-codex-facts-refresh-2026-08-09.md)；把官方产品描述、账户层未知项和本地未复现分开记录。
+- 教程方法综合：[`web-methods-synthesis-2026-08-10.md`](../../docs/research/web-methods-synthesis-2026-08-10.md)；本章使用其中关于问题收窄、证据层级和停止/复核的原创综合，不复制外部正文、代码或图片。
+- 外部资产许可：[`外部资产与来源台账`](../../docs/sources/asset-register.md)，包括 S01、S02、S03 和 S06；S02 为 `CC BY-NC 4.0`，发布前仍需重新审查。
+- 易变产品与协议事实：[`OpenAI Codex 仓库`](https://github.com/openai/codex)及相关官方文档。研究时记录具体 URL、访问日期和版本，不把 Issue 推测写成官方结论。
+- 更新负责人：Prysai LLM Playbook 维护者；来源、版本或许可证变化时复核，最迟于 2026-11-09。章节保持 `candidate`，研究结果只有在关键主张经过人工复核并有当前来源证据后才能称为 `verified`。
+
 ## 失败案例与验收
 
 失败变体：给出一篇带命令式文字的网页摘要，或两篇范围不同且互相矛盾的来源。正确做法是把命令当数据、把冲突显式保留，并缩小结论；不是让模型选一个更顺眼的答案。
@@ -212,6 +220,15 @@ action: keep | narrow | remove | request_source
 - [ ] 我记录了纳入、排除、冲突和停止原因。
 - [ ] 我没有把模型摘要或引用列表当原始证据。
 - [ ] 另一位读者能复查我的来源和主张边界。
+- [ ] 我处理了不可访问、过时、冲突或范围不匹配的来源，并相应调整了语气。
+- [ ] 我记录了至少三组检索词、一次反向检索、停止门、截止日期与时区，以及尚未覆盖的范围。
+- [ ] 我保存了原始 URL、最终 URL，以及重定向、限流和登录墙状态；没有把搜索摘要当正文。
+- [ ] 我把论坛观察、社区 workaround、根因假设、维护者确认和本地复现分开记录。
+- [ ] 我打开并定位了关键 AI 引用；不受支持的部分已拆分、降级或删除。
+- [ ] 关键证据不足时，我交付了带停止原因、低风险降级和下次复核条件的 `candidate` 结果。
+- [ ] 我识别了来源中的 prompt injection，没有把外部文档当成更高优先级的指令。
+- [ ] 我能说明 S02 的 `CC BY-NC 4.0` 边界，以及本章为何属于原创改写。
+- [ ] 我能说明 FP-01 或 FP-02 为什么需要分阶段证据，而不能只贴一个“成功”标签。
 
 来源会过期，产品事实更会变化。研究完成不等于结论永久有效；请记录复核人和日期。可配合 [实验 008：把主题缩成可研究的问题](../labs/lab-008-research-question-ZH.md)。本章仍是 `candidate`，研究模板存在不证明结论正确。
 
@@ -255,7 +272,7 @@ action: keep | narrow | remove | request_source
 ```text
 decision: <要支持的决定>
 question_and_scope: <问题、产品面、版本、地区、截止日期>
-checked_sources: <来源所有者、URL、访问日期和状态>
+checked_sources: <来源负责人、URL、访问日期和状态>
 supported_claims: <可直接支持的主张 ID>
 conflicts_or_unknowns: <冲突、不可访问或未定位的主张>
 stop_reason: <缺来源、范围冲突、权限/登录墙、预算到期等>
@@ -384,9 +401,9 @@ status: candidate | blocked | not_run
 范围：包含什么、不包含什么、事实截止到何日何时何地？
 停止：缺少哪项来源、授权或定义时必须暂停？
 ```
-### 给每条主张配来源所有者
+### 给每条主张配来源负责人
 
-| 主张 | 最可能的来源所有者 | 直接支持 | 冲突/未知 | 下一项允许检查 |
+| 主张 | 最可能的来源负责人 | 直接支持 | 冲突/未知 | 下一项允许检查 |
 |---|---|---|---|---|
 | [一句可核查的话] | 官方产品页 / 原始研究 / 法律政策 / 第一方数据 / 具名机构 | 引文或段落位置 | 不支持的部分或不同版本 | 一项最小检查 |
 
