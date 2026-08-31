@@ -29,6 +29,23 @@ tooling are Apache-2.0, unless a file states otherwise. See [`LICENSE`](LICENSE)
 static checks exist, but learner runs, transfer runs, repeated evaluations,
 and independent review are still pending.
 
+## The shortest useful path
+
+If you only have a few minutes, follow this order:
+
+1. **Read the [foundation route](book/routes/llm-foundation-core-v1-EN.md).**
+   It explains the model boundary before introducing products or tools.
+2. **Make one small, bounded request.** State the goal, supplied context,
+   limits, and the shape of the answer you need.
+3. **Check what came back.** Keep a small record of what was proposed, what
+   you inspected, and what is still unknown.
+4. **Try the same method on a new task.** Continue, revise, or stop based on
+   the evidence—not on how confident the answer sounds.
+
+The intended value is a reusable working habit, not a collection of prompt
+tricks. The route is still `candidate`: these are designed learning steps and
+artifacts, not measured completion or productivity results.
+
 ## What this is
 
 You may have heard people mention Codex, Claude Code, Agents, or Skills and
